@@ -137,8 +137,12 @@ class PySocialWatcher:
     def build_collection_dataframe(input_data_json, output_dir = ""):
         print_info("Building Collection Dataframe")
         collection_dataframe = build_initial_collection_dataframe()
+        print("1------")
+        print(collection_dataframe)
         collection_queries = []
         input_combinations = get_all_combinations_from_input(input_data_json)
+        print("2----------")
+        print(input_combinations)
         print_info("Total API Requests:" + str(len(input_combinations)))
         for index,combination in enumerate(input_combinations):
             print_info("Completed: {0:.2f}".format(100*index/float(len(input_combinations))))
@@ -207,8 +211,9 @@ class PySocialWatcher:
         PySocialWatcher.expand_input_if_requested(input_data_json)
         PySocialWatcher.check_input_integrity(input_data_json)
         collection_dataframe = PySocialWatcher.build_collection_dataframe(input_data_json, output_dir)
-        collection_dataframe = PySocialWatcher.perform_collection_data_on_facebook(collection_dataframe, output_dir)
-        return collection_dataframe
+        print(collection_dataframe)
+        #collection_dataframe = PySocialWatcher.perform_collection_data_on_facebook(collection_dataframe, output_dir)
+        #return collection_dataframe
 
     @staticmethod
     def load_data_and_continue_collection(input_file_path):
@@ -224,4 +229,4 @@ class PySocialWatcher:
 
     @staticmethod
     def print_bad_joke():
-        print "I used to think the brain was the most important organ.\nThen I thought, look what’s telling me that."
+        print("I used to think the brain was the most important organ.\nThen I thought, look what’s telling me that.")
